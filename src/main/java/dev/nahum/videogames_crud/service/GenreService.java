@@ -20,6 +20,11 @@ public class GenreService {
         return genreRepository.save(genre);
     }
 
+    public Genre findGenreById(Long id){
+        return genreRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Genre not found" + id) );
+    }
+
     public void deleteGenreById(Long id){
         genreRepository.deleteById(id);
     }
