@@ -22,7 +22,7 @@ public class GenreService {
 
     public Genre findGenreById(Long id){
         return genreRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Genre not found" + id) );
+                .orElseThrow(() -> new RuntimeException("Genre not found: " + id) );
     }
 
     public void deleteGenreById(Long id){

@@ -2,6 +2,8 @@ package dev.nahum.videogames_crud.controller;
 
 import dev.nahum.videogames_crud.model.Videogame;
 import dev.nahum.videogames_crud.service.VideogamesService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 import lombok.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,17 +18,17 @@ public class VideogameController {
     private final VideogamesService videogamesService;
 
     @GetMapping("/{id}")
-    public Videogame findVideogameById(@PathVariable Long id){
+    public Videogame findVideogameById(@Positive @PathVariable Long id){
         return videogamesService.findVideogameById(id);
     }
 
     @PostMapping()
-    public Videogame createVideogame(@RequestBody Videogame videogame){
+    public Videogame createVideogame(@Valid @RequestBody Videogame videogame){
         return videogamesService.createVideogame(videogame);
     }
 
     @PutMapping("/{id}")
-    public Videogame editVideogame(@PathVariable Long id , @RequestBody Videogame videogame){
+    public Videogame editVideogame(@PathVariable Long id , @Valid @RequestBody Videogame videogame){
         videogame.setId(id);
         return videogamesService.editVideogame(videogame);
     }

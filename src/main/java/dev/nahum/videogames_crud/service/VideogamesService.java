@@ -32,7 +32,7 @@ public class VideogamesService {
 
     public Videogame findVideogameById(Long id){
         return videogameRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Videogame not found" + id) );
+                .orElseThrow(() -> new RuntimeException("Videogame not found: " + id) );
     }
 
 }
